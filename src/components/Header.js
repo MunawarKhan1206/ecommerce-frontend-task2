@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Bars3Icon, XMarkIcon, ShoppingCartIcon, } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, ShoppingCartIcon, HeartIcon, } from "@heroicons/react/24/outline";
 
 export default function Header({ products, setFilteredProducts }) {
   const { user, logout } = useAuth();
@@ -42,7 +42,11 @@ export default function Header({ products, setFilteredProducts }) {
           <Link href="/Cart">
             <ShoppingCartIcon className="h-6 w-6 text-gray-600 hover:text-blue-500" />
           </Link>
-        
+          <nav className="hidden md:flex space-x-6">
+          <Link href="/wishlist">
+            <HeartIcon className="h-6 w-6 text-gray-600 hover:text-blue-500" />
+          </Link>
+          </nav>
           {user ? (
             <>
               <Link href="/dashboard" className="text-gray-700">Dashboard</Link>

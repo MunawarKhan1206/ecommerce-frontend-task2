@@ -1,43 +1,74 @@
 "use client";
-import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext"; // Import useAuth
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
+  const { user  } = useAuth();  // Get user from authentication context
   const router = useRouter();
   const [orders, setOrders] = useState([]);
 
+  // Redirect to login if the user is not authenticated
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.push("/login");  // Redirect to login if no user
     } else {
-      fetchOrders();
+      const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      setOrders(savedOrders);
     }
-  }, [user, router]); 
+  }, [user, router]);
 
-  const fetchOrders = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
-    const data = await response.json();
-    setOrders(data);
+  const handleLogout = () => {
+    router.push("/login");
   };
-
-  if (!user) return <p className="text-center font-bold text-2xl text-black">Loading...</p>;
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold">Welcome, {user.name}</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">Admin Dashboard</h1>
 
-      <h2 className="text-xl mt-4">Order History</h2>
-      <ul className="mt-2">
-        {orders.map((order) => (
-          <li key={order.id} className="border p-2 my-2">
-            {order.title}
-          </li>
-        ))}
-      </ul>
+      {/* Logout Button */}
+      <button
+        onClick={handleLogout}
+        className="px-4 py-2 bg-red-500 text-white rounded-md"
+      >
+        Logout
+      </button>
 
-      <button onClick={logout} className="bg-red-500 text-white p-2 mt-4">Logout</button>
+      {orders.length === 0 ? (
+        <p className="text-center mt-4 text-gray-600">No orders yet.</p>
+      ) : (
+        <div>
+          <ul className="space-y-4 mt-6">
+            {orders.map((order, index) => (
+              <li
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-200"
+              >
+                <h2 className="text-2xl font-semibold">Order #{index + 1}</h2>
+                <div className="mt-2 text-sm text-gray-700">
+                  <p>Customer: {order.customer.name}</p>
+                  <p>Address: {order.customer.address}, {order.customer.zip}</p>
+                  <p>Phone: {order.customer.phone}</p>
+                  <p>Total Amount: ${order.totalAmount}</p>
+                  <p>Order Date: {order.date}</p>
+                </div>
+
+                <h3 className="text-xl font-semibold mt-4">Ordered Items:</h3>
+                <ul className="space-y-2 mt-2">
+                  {order.items.map((item, idx) => (
+                    <li key={idx} className="text-sm text-gray-700">
+                      <h1 className="font-bold text-lg">{item.title}</h1>
+                      <h4 className="font-semibold text-lg">
+                        ${item.price} x {item.quantity}
+                      </h4>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
