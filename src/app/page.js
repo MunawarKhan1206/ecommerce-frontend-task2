@@ -49,7 +49,7 @@ export default function Home() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 border-4 border-t-4 border-blue-500 rounded-full animate-spin"></div>
-          <h1 className="text-xl font-semibold text-gray-600">Wait while we are Loading products for you from API</h1>
+          <h1 className="text-xl font-semibold text-gray-600">Loading products...</h1>
         </div>
       </div>
     );

@@ -2,9 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import Footer from "@/components/Footer";
-import "./globals.css";
+import "./globals.css"
 import { ToastContainer } from "react-toastify";
-import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,15 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AuthProvider>
           <CartProvider>
-            <main>
-              {children}
-              <Analytics />
-            </main>
+            <main>{children}</main>          
             <Footer />
             <ToastContainer />
           </CartProvider>
