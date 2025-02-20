@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# eCommerce Frontend Project
 
-## Getting Started
+This is a frontend project for an eCommerce platform built using **Next.js**, **Tailwind CSS**, **Toastify**, and **Roast**. The app provides a user-friendly, responsive interface for browsing products, managing a shopping cart, and receiving notifications for various actions.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js**: React framework for building fast and dynamic web applications.
+- **Tailwind CSS**: A utility-first CSS framework that helps create custom designs quickly.
+- **Toastify**: A library for displaying non-intrusive toast notifications.
+- **Roast**: A lightweight state management library to manage application states (e.g., cart items).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Responsive Product Listings**: Display products in a grid layout, showcasing details such as name, price, and image.
+- **Product Details Page**: View detailed product information with the ability to add it to the cart.
+- **Shopping Cart**: Allows users to add/remove items, with a simple interface to manage the cart.
+- **Toast Notifications**: User-friendly notifications powered by Toastify, alerting users of successful actions (e.g., item added to cart).
+- **State Management**: Using **Roast** for managing global state, including cart and user authentication.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Admin Access
 
-To learn more about Next.js, take a look at the following resources:
+For accessing the **Admin Dashboard** or any protected routes, use the following credentials:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Admin Email**: test@example.com`
+- **Admin Password**: `password`
